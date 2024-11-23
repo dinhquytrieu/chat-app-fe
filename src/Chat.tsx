@@ -31,63 +31,38 @@ const Chat: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
-      <h2>Real-Time Chat</h2>
+    <div className="p-6 max-w-lg mx-auto">
+      <h2 className="text-2xl font-bold mb-4 text-center">Real-Time Chat</h2>
       <input
         type="text"
         placeholder="Enter your username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        style={{
-          width: "100%",
-          padding: "8px",
-          marginBottom: "10px",
-          borderRadius: "5px",
-          border: "1px solid #ccc",
-        }}
+        className="w-full p-2 mb-4 rounded border border-gray-300 focus:outline-none focus:ring focus:ring-blue-300"
       />
-      <div
-        style={{
-          border: "1px solid #ccc",
-          borderRadius: "5px",
-          height: "300px",
-          overflowY: "scroll",
-          padding: "10px",
-          marginBottom: "10px",
-          backgroundColor: "#f9f9f9",
-        }}
-      >
+      <div className="border border-gray-300 rounded h-72 overflow-y-scroll p-4 mb-4 bg-gray-50">
         {messages.map((msg, index) => (
-          <div key={index}>
-            <strong>{msg.sender}:</strong> {msg.message}
+          <div key={index} className="mb-2">
+            <strong className="text-blue-500">{msg.sender}:</strong>{" "}
+            {msg.message}
           </div>
         ))}
       </div>
-      <input
-        type="text"
-        placeholder="Type a message"
-        value={currentMessage}
-        onChange={(e) => setCurrentMessage(e.target.value)}
-        style={{
-          width: "80%",
-          padding: "8px",
-          marginRight: "10px",
-          borderRadius: "5px",
-          border: "1px solid #ccc",
-        }}
-      />
-      <button
-        onClick={sendMessage}
-        style={{
-          padding: "8px 12px",
-          borderRadius: "5px",
-          backgroundColor: "#007bff",
-          color: "#fff",
-          border: "none",
-        }}
-      >
-        Send
-      </button>
+      <div className="flex items-center">
+        <input
+          type="text"
+          placeholder="Type a message"
+          value={currentMessage}
+          onChange={(e) => setCurrentMessage(e.target.value)}
+          className="flex-1 p-2 rounded border border-gray-300 focus:outline-none focus:ring focus:ring-blue-300 mr-2"
+        />
+        <button
+          onClick={sendMessage}
+          className="px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+        >
+          Send
+        </button>
+      </div>
     </div>
   );
 };
